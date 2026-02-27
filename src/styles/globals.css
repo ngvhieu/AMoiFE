@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hiu-bg:      #0a0a0f;
+  --hiu-surface: #111118;
+  --hiu-elevated:#1a1a24;
+  --hiu-music:   #a855f7;
+  --hiu-photo:   #f43f5e;
+  --hiu-accent:  #a855f7;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--hiu-bg);
+  color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Grain overlay — giống hieumoi.online */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 192px 192px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--hiu-bg); }
+::-webkit-scrollbar-thumb { background: #1c1c2e; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #2d2d40; }
+
+/* Selection */
+::selection {
+  background: rgba(168, 85, 247, 0.4);
+  color: #fff;
+}
+
+/* ─── Animations ─────────────────────────────────────────────── */
+
+/* Spotlight */
+@keyframes spotlight {
+  0%   { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+}
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* Ticker */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker 28s linear infinite;
+}
+
+/* ShinyText */
+@keyframes shiny-text {
+  0%   { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+.animate-shiny-text {
+  animation: shiny-text 3s linear infinite;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass-strong {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+}
