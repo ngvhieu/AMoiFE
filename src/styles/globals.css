@@ -77,6 +77,12 @@ body::before {
   animation: shiny-text 3s linear infinite;
 }
 
+/* Gradient shift — hero heading line 2 */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
 /* ─── Utilities ──────────────────────────────────────────────── */
 @layer utilities {
   .text-balance { text-wrap: balance; }

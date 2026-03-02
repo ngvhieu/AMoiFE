@@ -5,7 +5,6 @@ export async function GET() {
   try {
     const response = await fetcher<any>({
       path: '/users',
-      isExternal: true,
     });
     return NextResponse.json(response);
   } catch (error) {
